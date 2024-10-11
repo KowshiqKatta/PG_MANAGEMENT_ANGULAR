@@ -1,0 +1,19 @@
+<div class = "tenants_list">
+    @for(tenant of selectedRoomTenants(roomId); track tenant.aadharcard){
+        <div class = "bg-white rounded-lg p-4 mx-auto my-8">
+            <p class="bg-gray-800 p-4 rounded-lg mb-4" >{{tenant.name}}</p>
+            <p class="bg-gray-800 p-4 rounded-lg mb-4" >{{tenant.age}}</p>
+            <p class="bg-gray-800 p-4 rounded-lg mb-4" >{{tenant.gender}}</p>
+            <p class="bg-gray-800 p-4 rounded-lg mb-4" >{{tenant.emailaddress}}</p>
+            <p class="bg-gray-800 p-4 rounded-lg mb-4" >{{tenant.aadharcard}}</p>
+            <p class="bg-gray-800 p-4 rounded-lg mb-4" >{{tenant.phonenumber}}</p>
+            <button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit Tenant Details</button>
+        </div>
+    }
+    @if(verify(roomId)){
+        <button class = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="showFormButton" (click)="showFormComponent()">Add Tenant</button>
+    }
+    @if(showForm){
+        <app-addtenants (formClosed)="closeFormComponent()" (add) = "onAddTenant($event)"></app-addtenants>
+    }
+</div>

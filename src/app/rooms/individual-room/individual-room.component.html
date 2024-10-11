@@ -1,0 +1,13 @@
+<div class = "container">
+    <button class = "color" (click)="onSelectRoom()" [class.active] = "status()">
+    @if(parsing(room.id)%100 === 1 || parsing(room.id)%100 === 2){
+        <p class="p-4 rounded-lg mb-4" >
+            {{room.id}} Two sharing room
+        </p>
+    }@else{
+        <p class="p-4 rounded-lg mb-4">
+            {{room.id}} Three sharing room
+        </p>
+    }
+</button>
+</div>

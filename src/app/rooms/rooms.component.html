@@ -1,0 +1,21 @@
+<div class = "container">
+    <section id = "rooms">
+        <header>
+            <h2 class = "animate-fade-in -translate-y-3 text-balance bg-gradient-to-br from-white from-30% to-white/40 bg-clip-text py-6 text-lg font-medium leading-none tracking-tighter opacity-100 [--animation-delay:200ms] sm:text-5xl md:text-5xl lg:text-5xl dark:from-white dark:to-white/40">{{floor}}'s Rooms</h2>
+        </header>
+            @for(room of selectedFloorRooms(floorId); track room.id){
+                <app-individual-room 
+                [room]="room"
+                (select)="onSelectRoom($event)"
+                [selected] = "room.id === selectedRoomId"
+                />
+            }
+            @if(selectedRoomId){
+                <app-tenants
+                [roomId]="selectedRoomId"
+                />
+            }@else{
+    
+            }
+    </section>
+</div>

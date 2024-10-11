@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FloorsListComponent } from './floors-list/floors-list.component';
+import { LIST_OF_FLOORS } from './list_of_floors';
+import { FloorComponent } from './floors-list/floor/floor.component';
+import {RoomsComponent} from './rooms/rooms.component'
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  imports: [FormsModule, CommonModule, FloorsListComponent, FloorComponent, RoomsComponent],
+  standalone: true,
 })
 export class AppComponent {
-  title = 'pg_management';
+  floors = LIST_OF_FLOORS;
+  selectedFloorId ?:string;
+
+  get selectedFloor(){
+    return this.floors.find((floor) => floor.id === this.selectedFloorId)!;
+  }
+  onSelectFloor(id: string){
+    this.selectedFloorId = id;
+  }
 }
